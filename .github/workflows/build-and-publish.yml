@@ -7,6 +7,10 @@ on:
     tags:
       - "v*"
 
+permissions:
+  contents: write # Required to create releases and modify repository contents
+  deployments: write # Required for creating deployments associated with releases
+
 jobs:
   build:
     runs-on: ubuntu-latest
