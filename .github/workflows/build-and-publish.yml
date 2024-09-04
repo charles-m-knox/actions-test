@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    tags:
+      - "v*"
 
 jobs:
   build:
@@ -24,14 +26,9 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
 
-      # - name: Publish client jar file as release artifact
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: output.txt
-      #     path: build/libs/output.txt
-
       # https://github.com/marketplace/actions/create-release
       - uses: ncipollo/release-action@v1
+        if: github.event_name == 'push' && github.event.ref_type == 'tag'
         with:
-          artifacts: "release.tar.gz,foo/*.txt"
+          artifacts: "build/libs/output.txt"
           bodyFile: ".github/workflows/release-body.md"

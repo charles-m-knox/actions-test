@@ -2,4 +2,6 @@
 
 mkdir -p build/libs
 
-gradle -v >build/libs/output.txt
+javac -version >build/libs/output.txt
+
+gradle -v >>build/libs/output.txt
