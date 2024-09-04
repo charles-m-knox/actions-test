@@ -1,4 +1,4 @@
-name: Build and Publish Client JAR
+name: Build and publish artifacts
 
 on:
   push:
